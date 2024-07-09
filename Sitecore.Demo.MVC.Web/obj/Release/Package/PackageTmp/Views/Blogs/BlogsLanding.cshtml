@@ -1,0 +1,45 @@
+﻿@using Sitecore.Demo.MVC.Web.Models.Feature.Blogs;
+@using Newtonsoft.Json
+@model Blogs
+@{
+    string json = JsonConvert.SerializeObject(Model);
+}
+
+<experience-component :sitecore-data="@json"></experience-component>
+<p>@json</p>
+<div class="blog">
+    <div class="container">
+        <div class="section-header text-center">
+            @if (Model != null)
+            {
+                <p>@Model.Title</p>
+                <h2>@Model.SubTitle</h2>
+            }
+        </div>
+        <div class="row blog-page">
+            @foreach (var blogItem in Model.BlogsList)
+            {
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="blog-item">
+                        <div class="blog-img">
+                            @blogItem.Image
+                        </div>
+                        <div class="blog-title">
+                            <h3>@blogItem.Title</h3>
+                            <a class="btn" href="@blogItem.CallToAction">+</a>
+                        </div>
+                        <div class="blog-meta">
+                            <p>@blogItem.ByCopy</p>
+                            <p>@blogItem.InCopy</p>
+                        </div>
+                        <div class="blog-text">
+                            <p>
+                                @blogItem.Description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

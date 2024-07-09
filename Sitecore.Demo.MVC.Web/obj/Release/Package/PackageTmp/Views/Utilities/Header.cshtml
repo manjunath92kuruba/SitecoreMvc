@@ -1,0 +1,92 @@
+﻿@using Sitecore.Mvc;
+@using Sitecore.Mvc.Presentation;
+@using Sitecore.Demo.MVC.Web.Models.Foundation;
+@model Header
+
+@if (Model != null && Model.Item != null)
+{
+    <!-- Top Bar Start -->
+    <div class="top-bar">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-12">
+                    <div class="logo">
+                        <h1>@Html.Sitecore().Field("Logo", Model.Item)</h1>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-7 d-none d-lg-block">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="top-bar-item">
+                                <div class="top-bar-icon">
+                                    <i class="flaticon-calendar"></i>
+                                </div>
+                                <div class="top-bar-text">
+                                    <h3>@Html.Sitecore().Field("OpeningTitle", Model.Item)</h3>
+                                    <p>@Html.Sitecore().Field("OpeningCopy", Model.Item)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="top-bar-item">
+                                <div class="top-bar-icon">
+                                    <i class="flaticon-call"></i>
+                                </div>
+                                <div class="top-bar-text">
+                                    <h3>@Html.Sitecore().Field("CallUsTitle", Model.Item)</h3>
+                                    <p>@Html.Sitecore().Field("CallUsCopy", Model.Item)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="top-bar-item">
+                                <div class="top-bar-icon">
+                                    <i class="flaticon-send-mail"></i>
+                                </div>
+                                <div class="top-bar-text">
+                                    <h3>@Html.Sitecore().Field("EmailUsTitle", Model.Item)</h3>
+                                    <p>@Html.Sitecore().Field("EmailUsCopy", Model.Item)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Top Bar End -->
+    <!-- Nav Bar Start -->
+    <div class="nav-bar">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+                <a href="#" class="navbar-brand">MENU</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto">
+                        @foreach (var navigationLink in Model.NavLinks)
+                        {
+                            @navigationLink.CallToAction
+                            if (navigationLink.SubNavigation!=null && navigationLink.SubNavigation.Count > 0)
+                            {
+                                foreach (var childNavigationLinks in navigationLink.SubNavigation)
+                                {
+                                    <div class="dropdown-menu">
+                                        @childNavigationLinks.CallToAction
+                                    </div>
+                                }
+                            }
+
+                        }
+                    </div>
+                    <div class="ml-auto">
+                        @Html.Sitecore().Field("GetQuoteLink", Model.Item);
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Nav Bar End -->
+}

@@ -1,0 +1,45 @@
+﻿.tour-container {
+    font-size: 19px;
+    padding: 0 10px;
+
+    .header {
+        .top-navigation {
+            display: flex;
+            justify-content: space-between;
+            .logo {
+                    text-decoration: none;
+                    font-size: 100px;
+                    color: coral;
+            }
+            .right-content {
+                display: flex;
+                justify-content: space-between;
+
+                .tour-details {
+                    display: flex;
+                    margin: 0 25px 0 0;
+
+                    .icon {
+                        margin: 25px 10px 25px 0;
+                        color: coral;
+                        .material-icons {
+                            font-size: 60px;
+                        }
+                    }
+                }
+            }
+        }
+        .navigation-links {
+            display: flex;
+            background-color: black;
+            height: 60px;
+            align-items: center;
+
+            .nav-link {
+                text-decoration: none;
+                color: coral;
+                margin-left: 25px;
+            }
+        }
+    }
+}

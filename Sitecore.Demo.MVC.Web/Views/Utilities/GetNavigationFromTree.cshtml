@@ -1,0 +1,32 @@
+﻿@using Sitecore.Mvc;
+@using Sitecore.Mvc.Presentation;
+@using Sitecore.Demo.MVC.Web.Models.Foundation;
+@model Header
+
+@if (Model != null && Model.Navigation != null)
+{
+    <!-- Nav Bar Start -->
+    <div class="nav-bar">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+                <a href="#" class="navbar-brand">MENU</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto">
+                        @foreach (var navigationItem in Model.Navigation)
+                        {
+                            @*@navigationLink.CallToAction*@
+                            <a href="@navigationItem.NavigationLink" class="nav-item nav-link @navigationItem.ActiveClass">@navigationItem.NavigationText</a>
+                        }
+                    </div>
+                    @*<div class="ml-auto">
+                        @Html.Sitecore().Field("GetQuoteLink", Model.Item);
+                    </div>*@
+                </div>
+            </nav>
+        </div>
+    </div><!-- Nav Bar End -->
+}

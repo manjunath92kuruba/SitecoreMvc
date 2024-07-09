@@ -1,0 +1,27 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Tours.Models.Shared
+@model PageItem
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/css/Site.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
+    <title>@Model.Title</title>
+</head>
+<body>
+    <div class="tour-container">
+        @Html.AntiForgeryToken()
+        @Html.Sitecore().Placeholder("Header")
+        @Html.Sitecore().Placeholder("Content")
+        @Html.Sitecore().Placeholder("Footer")
+    </div>
+    <script src="~/Content/js/Site.js"></script>
+</body>
+</html>

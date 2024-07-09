@@ -1,0 +1,77 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Demo.MVC.Web.Models.Foundation
+@model Footer
+
+<!-- Footer Start -->
+@if (Model != null && Model.Item != null)
+{
+    <div class="footer wow fadeIn" data-wow-delay="0.3s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-contact">
+                        <h2>@Html.Sitecore().Field("OfficeTitle", Model.Item)</h2>
+                        <p><i class="fa fa-map-marker-alt"></i>@Html.Sitecore().Field("Address", Model.Item)</p>
+                        <p><i class="fa fa-phone-alt"></i>@Html.Sitecore().Field("Number", Model.Item)</p>
+                        <p><i class="fa fa-envelope"></i>@Html.Sitecore().Field("EmailId", Model.Item)</p>
+                        <div class="footer-social">
+                            @foreach(var socialLink in Model.SocialLinks)
+                            {
+                                @socialLink.CallToAction
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-link">
+                        <h2>@Html.Sitecore().Field("ServicesTitle",Model.Item)</h2>
+                        @foreach (var serviceLink in Model.ServicesLinks)
+                        {
+                            @serviceLink.CallToAction
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-link">
+                        <h2>@Html.Sitecore().Field("UsefulPagesTitle", Model.Item)</h2>
+                        @foreach(var usefulPagesLink in Model.UsefulPagesLinks)
+                        {
+                            @usefulPagesLink.CallToAction
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="newsletter">
+                        <h2>@Html.Sitecore().Field("NewsLetterTitle", Model.Item)</h2>
+                        <p>
+                            @Html.Sitecore().Field("NewsLetterContent", Model.Item)
+                        </p>
+                        <div class="form">
+                            <input class="form-control" placeholder="Email here">
+                            <button class="btn">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-menu">
+            <div class="f-menu">
+                @foreach (var footerLink in Model.FooterLinks)
+                {
+                    @footerLink.CallToAction
+                }
+            </div>
+        </div>
+        <div class="container copyright">
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.Sitecore().Field("CopyRights", Model.Item)
+                </div>
+                <div class="col-md-6">
+                    @Html.Sitecore().Field("Author", Model.Item)
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<!-- Footer End -->

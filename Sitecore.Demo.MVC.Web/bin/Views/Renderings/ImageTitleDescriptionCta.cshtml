@@ -1,0 +1,13 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@model Sitecore.Demo.MVC.Web.Models.Foundation.ImageTitleDescriptionCta
+
+@if (Model != null)
+{
+<div>
+    <h3>@Html.Sitecore().Field("Title", Model.Title)</h3>
+    <experience-component :data="@Model.Title"></experience-component>
+    <h1>Hello</h1>
+    <home-landing></home-landing>
+</div>
+}

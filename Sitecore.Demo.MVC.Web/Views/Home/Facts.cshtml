@@ -1,0 +1,56 @@
+﻿@using Sitecore.Demo.MVC.Web.Models.Feature.Home
+@model Facts
+
+@if (Model != null)
+{
+    <!-- Fact Start -->
+    <div class="fact">
+        <div class="container-fluid">
+            <div class="row counters">
+                @if (Model.FactsOne.Count > 0)
+                {
+                    <div class="col-md-6 fact-left wow slideInLeft">
+                        <div class="row">
+
+                            @foreach (var factsOne in Model.FactsOne)
+                            {
+                                <div class="col-6">
+                                    <div class="fact-icon">
+                                        <i class="@factsOne.Icon"></i>
+                                    </div>
+                                    <div class="fact-text">
+                                        <h2 data-toggle="counter-up">@factsOne.Title</h2>
+                                        @factsOne.Description
+                                    </div>
+                                </div>
+                             }
+
+                            </div>
+                    </div>
+                }
+                @if (Model.FactsTwo.Count > 0)
+                {
+                    <div class="col-md-6 fact-right wow slideInRight">
+                        <div class="row">
+                            @foreach (var factsTwo in Model.FactsTwo)
+                            {
+                                <div class="col-6">
+                                    <div class="fact-icon">
+                                        <i class="@factsTwo.Icon"></i>
+                                    </div>
+                                    <div class="fact-text">
+                                        <h2 data-toggle="counter-up">@factsTwo.Title</h2>
+                                        @factsTwo.Description
+                                    </div>
+                                </div>
+                             }
+                                
+                            </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <!-- Fact End -->
+}

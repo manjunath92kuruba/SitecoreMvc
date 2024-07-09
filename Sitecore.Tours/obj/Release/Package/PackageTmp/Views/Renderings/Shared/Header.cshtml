@@ -1,0 +1,37 @@
+﻿@using Sitecore.Tours.Models.Shared
+@model Header
+
+@if(Model != null)
+{
+<div class="header">
+    <div class="top-navigation">
+        <a href="@Model.Logo.Url" class="logo">@Model.Logo.Text</a>
+        <div class="right-content">
+            <div class="tour-details">
+                <div class="icon">
+                    <i class="material-icons">call</i>
+                </div>
+                <div class="content">
+                    <h3 class="title">@Model.CallUsTitle</h3>
+                    <p class="copy">@Model.CallUsCopy</p>
+                </div>
+            </div>
+            <div class="tour-details">
+                <div class="icon">
+                    <i class="material-icons">email</i>
+                </div>
+                <div class="content">
+                    <h3 class="title">@Model.EmailUsTitle</h3>
+                    <p class="copy">@Model.EmailUsCopy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="navigation-links">
+            @foreach (var link in @Model.NavLinks)
+            {
+                <a href="@link.CallToAction.Url" class="nav-link">@link.CallToAction.Text</a>
+            }
+        </div>
+</div>
+}
